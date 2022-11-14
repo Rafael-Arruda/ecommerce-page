@@ -26,11 +26,6 @@ export const LogoArea = styled.div`
     display: flex;
     align-items: center;
 
-    h1 {
-        letter-spacing: -1px;
-        font-size: 30px;
-    }
-
     .icon_menu {
         cursor: pointer;
         display: none;

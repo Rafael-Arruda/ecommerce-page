@@ -22,9 +22,27 @@ export const Sample = styled.div`
         align-items: center;
         justify-content: space-between;
 
-        img {
+        figure {
             width: 70px;
+            height: 70px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
             border-radius: 6px;
+        }
+
+        .selected-thumb {
+            border: 2px solid hsl(26, 100%, 55%);
+            border-radius: 6px;
+            overflow: hidden;
+
+            img {
+                opacity: 0.3;
+                border-radius: 0;
+            }
         }
     }
 `;
@@ -92,15 +110,26 @@ export const Content = styled.div`
             background: hsl(26, 100%, 55%);
             color: #fff;
             border: 0;
-            padding: 10px 50px;
+            padding: 12px 50px;
             border-radius: 6px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s all;
         }
+        .btn-add:hover {
+            opacity: 0.6;
+        } 
     }
 
     .box-qty {
-        background-color: hsl(223, 64%, 98%);
+        width: 120px;
         padding: 5px 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: hsl(223, 64%, 98%);
         border-radius: 5px;
 
         span {

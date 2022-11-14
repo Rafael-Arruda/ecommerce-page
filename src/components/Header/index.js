@@ -5,13 +5,15 @@ import iconCart from '../../images/icon-cart.svg';
 import imageUser from '../../images/image-avatar.png';
 import iconMenu from '../../images/icon-menu.svg';
 
+import logo from '../../images/logo.svg';
+
 const Header = () => {
     return(
         <C.Container>
             <C.Content>
                 <C.LogoArea>
                     <img className="icon_menu" src={iconMenu} alt="icon menu"/>
-                    <h1>sneakers</h1>
+                    <img src={logo} alt="logo"/>
                 </C.LogoArea>
                 <C.Navigation>
                     <ul>

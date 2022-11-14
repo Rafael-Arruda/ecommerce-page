@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import * as C from './style';
 
@@ -13,18 +13,59 @@ import thumb2 from '../../images/image-product-2-thumbnail.jpg';
 import thumb3 from '../../images/image-product-3-thumbnail.jpg';
 import thumb4 from '../../images/image-product-4-thumbnail.jpg';
 
+//icons
+import {FiShoppingCart} from 'react-icons/fi';
 
 const Main = () => {
+
+    const products = [product1, product2, product3, product4]
+    const thumbs = [thumb1, thumb2, thumb3, thumb4]
+    
+    const [sample, setSample] = useState(0)
+    const [selectedProduct, setSelectedProduct] = useState(products[sample])
+    const [selectedThumb, setSelectedThumb] = useState(thumbs[sample])
+
+    const [qty, setQty] = useState(0);
+
+    useEffect(() => {
+        setSelectedProduct(products[sample])
+        setSelectedThumb(thumbs[sample])
+    }, [sample])
+
+    function handleAddQty() {
+        if(qty < 10) {
+            setQty(prev => prev + 1)
+        }
+    }
+    function handleSubQty() {
+        if(qty > 0){
+            setQty(prev => prev - 1)
+        }
+    }
+
+    function handleSelectedThumb(index) {
+        setSample(index)
+    }
+
     return(
         <C.Container>
             <C.Sample>
-                <img src={product1} alt="product"/>
+                <img src={selectedProduct} alt="product"/>
                 
                 <div className="thumbnails">
-                    <img src={thumb1} alt='thumb'/>
-                    <img src={thumb2} alt='thumb'/>
-                    <img src={thumb3} alt='thumb'/>
-                    <img src={thumb4} alt='thumb'/>
+                    {thumbs.map((thumb, index) => (
+                        <>
+                            {sample === index ?
+                            <figure className="selected-thumb">
+                                <img src={thumb} alt="thumbnail"/>
+                            </figure> 
+                            :
+                            <figure onClick={() => handleSelectedThumb(index)}>
+                                <img src={thumb} alt="thumbnail"/>
+                            </figure>
+                            }
+                        </>
+                    ))}
                 </div>
             </C.Sample>
             <C.Content>
@@ -46,11 +87,14 @@ const Main = () => {
                 </div>
                 <div className="box-add-to-cart">
                     <div className="box-qty">
-                        <button>-</button>
-                        <span>0</span>
-                        <button>+</button>
+                        <button onClick={handleSubQty}>-</button>
+                        <span>{qty}</span>
+                        <button onClick={handleAddQty}>+</button>
                     </div>
-                    <button className="btn-add">Add to cart</button>
+                    <button className="btn-add">
+                        <FiShoppingCart size={15} color="#fff"/>
+                        Add to cart
+                    </button>
                 </div>
             </C.Content>
         </C.Container>
