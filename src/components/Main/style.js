@@ -2,11 +2,22 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    height: 85vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 80px;
+
+    // media queries
+    @media screen and (max-width: 900px){
+        gap: 50px;
+    }
+
+    @media screen and (max-width: 700px){
+        flex-direction: column;
+        gap: 20px; 
+        padding-bottom: 40px;
+    }
 `;
 
 export const Sample = styled.div`
@@ -34,7 +45,7 @@ export const Sample = styled.div`
             border-radius: 6px;
         }
 
-        .selected-thumb {
+        .selected-thumb, figure:hover {
             border: 2px solid hsl(26, 100%, 55%);
             border-radius: 6px;
             overflow: hidden;
@@ -43,6 +54,34 @@ export const Sample = styled.div`
                 opacity: 0.3;
                 border-radius: 0;
             }
+        }
+
+    }
+
+    // media queries
+    @media screen and (max-width: 900px){
+        
+        img {
+            width: 250px;
+        }
+
+        .thumbnails {
+
+            figure {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+    @media screen and (max-width: 700px){
+
+        img {
+            width: 100%;
+            border-radius: 0;
+        }
+            
+        .thumbnails {
+            display: none;
         }
     }
 `;
@@ -145,5 +184,98 @@ export const Content = styled.div`
             font-size: 1.5em;
             font-weight: bold;
         }
+    }
+
+    //media queries
+    @media screen and (max-width: 900px){
+
+        h5 {
+            margin-bottom: 5px;
+            font-size: 0.6em;
+        }
+
+        h1 {
+            font-size: 1.7em;
+            margin-bottom: 15px;
+            width: 350px;
+        }
+
+        p {
+            font-size: 12px;
+            margin-bottom: 12px;
+            width: 350px;
+        }
+    }
+    @media screen and (max-width: 700px){
+        width: 100%;
+        padding: 0px 20px;
+
+        h5 {
+            font-size: 0.8em;
+        }
+
+        h1 {
+            font-size: 2em;
+            width: 100%;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .box-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .current-price {
+            margin-bottom: 0;
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            span {
+                font-size: 1em;
+            }
+        }
+
+        .old-price {
+            margin-bottom: 0;
+
+            span {
+                font-size: 1.1em;
+            }
+        }
+
+        .box-add-to-cart {
+            flex-direction: column;
+
+            .btn-add {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+                padding: 15px;
+                font-size: 1em;
+            }
+        }
+
+        .box-qty {
+            width: 100%;
+            padding: 8px;
+
+            span {
+                font-size: 1.1em;
+            }
+
+            button {
+                font-size: 1.8em;
+            }
+        }
+
     }
 `;

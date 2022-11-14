@@ -92,7 +92,7 @@ const Main = () => {
                         <button onClick={handleAddQty}>+</button>
                     </div>
                     <button className="btn-add">
-                        <FiShoppingCart size={15} color="#fff"/>
+                        <FiShoppingCart size={17} color="#fff"/>
                         Add to cart
                     </button>
                 </div>
