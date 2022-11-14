@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import * as C from './style';
 
 import iconCart from '../../images/icon-cart.svg';
@@ -7,12 +7,27 @@ import iconMenu from '../../images/icon-menu.svg';
 
 import logo from '../../images/logo.svg';
 
+//components
+import Menu from "../Menu";
+
 const Header = () => {
+
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleShowMenu = () => {
+        setShowMenu(!showMenu)
+    }
+
     return(
         <C.Container>
+            {showMenu && 
+            <Menu
+            close={toggleShowMenu}
+            />
+            }
             <C.Content>
                 <C.LogoArea>
-                    <img className="icon_menu" src={iconMenu} alt="icon menu"/>
+                    <img onClick={toggleShowMenu} className="icon_menu" src={iconMenu} alt="icon menu"/>
                     <img src={logo} alt="logo"/>
                 </C.LogoArea>
                 <C.Navigation>
