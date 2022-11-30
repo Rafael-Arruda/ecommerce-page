@@ -9,13 +9,19 @@ import logo from '../../images/logo.svg';
 
 //components
 import Menu from "../Menu";
+import Cart from "../Cart";
 
 const Header = () => {
 
     const [showMenu, setShowMenu] = useState(false);
+    const [showCart, setShowCart] = useState(false);
 
     const toggleShowMenu = () => {
         setShowMenu(!showMenu)
+    }
+
+    function handleCart() {
+        setShowCart(!showCart)
     }
 
     return(
@@ -40,7 +46,8 @@ const Header = () => {
                     </ul>
                 </C.Navigation>
                 <C.ProfileArea>
-                    <img className="cart" src={iconCart} alt="cart icon"/>
+                    {showCart && <Cart/>}
+                    <img onClick={handleCart} className="cart" src={iconCart} alt="cart icon"/>
                     <img className="img_profile" src={imageUser} alt="user profile"/>
                 </C.ProfileArea>
             </C.Content>

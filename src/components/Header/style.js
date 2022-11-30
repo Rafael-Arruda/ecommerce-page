@@ -80,6 +80,7 @@ export const ProfileArea = styled.div`
 
     .cart {
         width: 20px;
+        cursor: pointer;
     }
 
     .img_profile {

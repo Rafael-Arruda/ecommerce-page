@@ -29,6 +29,14 @@ const Main = () => {
         }
     }
 
+    function handleAddToCart() {
+        if(qty === 0) {
+            alert('Adicione pelo menos 1 item ao carrinho!')
+            return
+        }
+        localStorage.setItem("@cartOfStore", JSON.stringify(qty))
+    }
+
     return(
         <>
             <C.Container>
@@ -56,7 +64,7 @@ const Main = () => {
                             <span>{qty}</span>
                             <button onClick={handleAddQty}>+</button>
                         </div>
-                        <button className="btn-add">
+                        <button onClick={handleAddToCart} className="btn-add">
                             <FiShoppingCart size={17} color="#fff"/>
                             Add to cart
                         </button>
