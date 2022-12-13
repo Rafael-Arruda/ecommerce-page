@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 
 import * as C from './style';
 
@@ -41,6 +41,7 @@ const Main = () => {
         <>
             <C.Container>
                 <Sample/>
+
                 <C.Content>
                     <h5>sneaker company</h5>
                     <h1>Fall Limited Edition Sneakers</h1>

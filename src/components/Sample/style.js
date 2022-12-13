@@ -8,6 +8,32 @@ export const Sample = styled.div`
         cursor: pointer;
     }
 
+    .mobile-sample {
+        display: flex;
+        align-items: center;
+
+        .prev, .next {
+            color: #000;
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 6px;
+            transition: 0.5s all;
+        }
+
+        .prev:hover, .next:hover {
+            color: hsl(26, 100%, 55%);
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+    }
+
     .thumbnails {
         margin-top: 20px;
         display: flex;

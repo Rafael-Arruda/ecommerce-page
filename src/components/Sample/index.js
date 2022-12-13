@@ -17,6 +17,10 @@ import thumb2 from '../../images/image-product-2-thumbnail.jpg';
 import thumb3 from '../../images/image-product-3-thumbnail.jpg';
 import thumb4 from '../../images/image-product-4-thumbnail.jpg';
 
+//icons
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+
+
 export default function Sample() {
 
     const {toggleShowModal} = useContext(ModalContext);
@@ -28,16 +32,48 @@ export default function Sample() {
     const [selectedProduct, setSelectedProduct] = useState(products[sample])
     const [selectedThumb, setSelectedThumb] = useState(thumbs[sample].thumb)
 
+    const [screenMobile, setScreenMobile] = useState(false);
+
+    
     useEffect(() => {
         setSelectedProduct(products[sample])
         setSelectedThumb(thumbs[sample])
     }, [sample])
+    
+    useEffect(() => {
+        if(window.screen.width <= 700){
+            setScreenMobile(true);
+        }else {
+            setScreenMobile(false);
+        }
+    }, [])
+    
+    function handlePrev() {
+        if(sample !== 0) {
+            handleSelectedSample(sample - 1)
+        }
+    }
+
+    function handleNext() {
+        if(sample !== 3) {
+            handleSelectedSample(sample + 1)
+        }
+    }
 
     return(
         <>
             <C.Sample>
-                <img onClick={() => toggleShowModal(true)} src={selectedProduct} alt="product"/>
-                        
+            {screenMobile? 
+            <div className="mobile-sample">
+                <img src={selectedProduct} alt="product"/> 
+
+                <FiChevronLeft className="prev" size={40} onClick={handlePrev}/>
+                <FiChevronRight className="next" size={40} onClick={handleNext}/>
+            </div>
+            :                 
+            <img onClick={() => toggleShowModal(true)} src={selectedProduct} alt="product"/>
+            }
+
                 <div className="thumbnails">
                     {thumbs.map((thumb, index) => (
                         <div key={index}>
