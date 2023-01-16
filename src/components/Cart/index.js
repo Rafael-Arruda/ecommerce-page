@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext} from "react";
 
 import * as C from './style';
 
@@ -6,19 +6,11 @@ import cartImage from '../../images/image-product-1-thumbnail.jpg';
 
 import {MdDelete} from 'react-icons/md';
 
+import { CartContext } from "../../contexts/cart";
+
 export default function Cart() {
 
-    const [items, setItems] = useState(null)
-
-    useEffect(() => {
-        let qty = localStorage.getItem("@cartOfStore")
-        setItems(parseInt(qty))
-    }, [])
-
-    function handleDeleteItem() {
-        localStorage.removeItem('@cartOfStore')
-        setItems(null)
-    }
+    const {items, handleDeleteItem} = useContext(CartContext);
 
     return(
         <C.Container>

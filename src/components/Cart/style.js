@@ -9,7 +9,7 @@ export const Container = styled.div`
     position: absolute;
     z-index: 1;
     top: 80px;
-    right: 60px;
+    right: 50px;
 
     @media screen and (max-width: 500px){
         width: 95%;

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import * as C from './style';
 
 import iconCart from '../../images/icon-cart.svg';
@@ -11,7 +11,11 @@ import logo from '../../images/logo.svg';
 import Menu from "../Menu";
 import Cart from "../Cart";
 
+import { CartContext } from "../../contexts/cart";
+
 const Header = () => {
+
+    const {items} = useContext(CartContext);
 
     const [showMenu, setShowMenu] = useState(false);
     const [showCart, setShowCart] = useState(false);
@@ -47,7 +51,10 @@ const Header = () => {
                 </C.Navigation>
                 <C.ProfileArea>
                     {showCart && <Cart/>}
-                    <img onClick={handleCart} className="cart" src={iconCart} alt="cart icon"/>
+                    <div>
+                        {items > 0 && <div className="circle_qty"><span>{items}</span></div>}
+                        <img onClick={handleCart} className="cart" src={iconCart} alt="cart icon"/>
+                    </div>
                     <img className="img_profile" src={imageUser} alt="user profile"/>
                 </C.ProfileArea>
             </C.Content>

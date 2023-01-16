@@ -78,6 +78,24 @@ export const ProfileArea = styled.div`
     display: flex;
     align-items: center;
 
+    .circle_qty {
+        background-color: hsl(26, 100%, 55%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        color: #fff;
+        width: 17px;
+        height: 15px;
+        position: relative;
+        left: 10px;
+        top: 7px;
+
+        span {
+            font-size: 0.6em;
+        }
+    }
+
     .cart {
         width: 20px;
         cursor: pointer;

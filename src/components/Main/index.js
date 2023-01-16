@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState, useContext} from "react";
 
 import * as C from './style';
 
@@ -11,31 +11,13 @@ import Modal from '../Modal';
 
 //context
 import {ModalContext} from '../../contexts/modal';
+import { CartContext } from "../../contexts/cart";
 
 const Main = () => {
 
     const {showModal} = useContext(ModalContext);
 
-    const [qty, setQty] = useState(0);
-
-    function handleAddQty() {
-        if(qty < 10) {
-            setQty(prev => prev + 1)
-        }
-    }
-    function handleSubQty() {
-        if(qty > 0){
-            setQty(prev => prev - 1)
-        }
-    }
-
-    function handleAddToCart() {
-        if(qty === 0) {
-            alert('Adicione pelo menos 1 item ao carrinho!')
-            return
-        }
-        localStorage.setItem("@cartOfStore", JSON.stringify(qty))
-    }
+    const {qty, handleAddQty, handleSubQty, handleAddToCart} = useContext(CartContext);
 
     return(
         <>
